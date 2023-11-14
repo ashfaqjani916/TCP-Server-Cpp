@@ -6,7 +6,7 @@
 using namespace std;
 
 void main() {
-	string  ipAddress = "10.1.170.56"; // IP addresss of the server
+	string  ipAddress = "192.168.0.160"; // IP addresss of the server
 	int port = 54000; // Listening port
 
 	// Initialize  winsocket
