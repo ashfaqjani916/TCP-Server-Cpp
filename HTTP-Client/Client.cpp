@@ -57,6 +57,7 @@ void main() {
 		cout << "Please enter the Roll Number for searching in the database." << endl;
 		cout << "> ";
 		getline(cin, userInput);
+		cout << "Your data will be recieved by the server in a while. Please wait..." << endl;
 
 		if (userInput.size() > 0) {  // Make sure the user has typed in something 
 			// Send the text
@@ -68,9 +69,10 @@ void main() {
 				ZeroMemory(buf, 4096);
 				int bytesRecieved = recv(sock, buf, 4096, 0);
 				if (bytesRecieved > 0) {
-					// Echo response to console
-
-					cout << "SERVER> " << string(buf, 0, bytesRecieved) << endl;
+					// Data response to console
+					cout << "SERVER> " << "Data recieved from the server successfully!" << endl;
+					cout << "SERVER> " << "The name of the student with the given Roll Number is ";
+					cout << string(buf, 0, bytesRecieved) << endl;
 
 				}
 
