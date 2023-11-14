@@ -1,6 +1,5 @@
 ﻿  Client.cpp
 C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
 C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(45,3): warning C4551: function call missing argument list
-C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(64,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  LINK : C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\x64\Debug\HTTP-Server-Client.exe not found or not built by the last incremental link; performing full link
+C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(65,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   HTTP-Server-Client.vcxproj -> C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\x64\Debug\HTTP-Server-Client.exe
