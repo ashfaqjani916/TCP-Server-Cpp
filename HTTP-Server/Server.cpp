@@ -1,9 +1,52 @@
 #include <iostream>
-#include <WS2tcpip.h>     //contains the API/Framework that windows uses to access network sockets
+#include <WS2tcpip.h>  //contains the API/Framework that windows uses to access network sockets
+#include <fstream>
+#include <vector>
+#include <string>
 
 #pragma comment (lib, "ws2_32.lib")
 
 using namespace std;
+
+class Data
+{
+public:
+	vector <pair<string, string>> data[10];
+	Data()
+	{
+		for (int i = 0; i < 10; ++i) {
+			data[i].emplace_back("", "");
+		}
+	}
+	void GetFileData()
+	{
+		ifstream inputFile("names.txt");
+
+		if (!inputFile.is_open())
+		{
+			cerr << "ERROR OPENING FILE.........!!!!" << endl;
+		}
+		string line;
+		while (getline(inputFile, line))
+		{
+			// Split the line into key and value using a delimiter (e.g., ":")
+			std::size_t pos = line.find(":");
+			if (pos != std::string::npos) {
+				string key = line.substr(0, pos);
+				string value = line.substr(pos + 1);
+
+				int len = key.length();
+				string num = line.substr(len - 2, pos);
+				int val = stoi(num);
+				// Create a key-value pair and add it to the vector
+				std::pair<std::string, std::string> pair = std::make_pair(key, value);
+				data[val/10].push_back(pair);
+			}
+		}
+		inputFile.close();
+
+	}
+};
 
 void main()
 {
@@ -70,6 +113,12 @@ void main()
 	{
 		ZeroMemory(buf, 4096);
 
+		// initialize the data into an array of vector of pairs
+
+		Data obj;
+		obj.GetFileData();
+
+
 
 
 		// wait for the client to send data
@@ -85,10 +134,30 @@ void main()
 			break;
 		}
 
+		// check the value form the data
+		string nam = buf;
+		int len = nam.length();
+		string num = nam.substr(len - 1, len);
+		int val = stoi(num);
+		bool c = true;
+		const char* thename = nullptr;
+		for (auto it : obj.data[val])
+		{
+			if (it.first == nam)
+			{
+				thename = it.second.c_str();
+				c = false;
+				break;
+			}
+		}
+		if (c)
+			cout << "You are not from R section......." << endl;
+
+
 		cout << string(buf, 0, bytesRecieved) << endl;
 
 		//echo message back to client
-		send(clientSocket, buf, bytesRecieved + 1, 0);
+		send(clientSocket,thename, bytesRecieved + 1, 0);
 
 	}
 
