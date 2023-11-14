@@ -1,0 +1,5 @@
+﻿  Client.cpp
+C:\Users\Admin\source\repos\HTTP-Server-Client\Client.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Admin\source\repos\HTTP-Server-Client\Client.cpp(45,3): warning C4551: function call missing argument list
+C:\Users\Admin\source\repos\HTTP-Server-Client\Client.cpp(62,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  HTTP-Server-Client.vcxproj -> C:\Users\Admin\source\repos\HTTP-Server-Client\x64\Debug\HTTP-Server-Client.exe
