@@ -51,8 +51,10 @@ void main() {
 	string userInput;
 
 	do {
-		// Prompt the user for soem text
+		// Prompt the user for some text
 
+		cout << "Welcome to the Server!" << endl;
+		cout << "Please enter the Roll Number for searching in the database." << endl;
 		cout << "> ";
 		getline(cin, userInput);
 
