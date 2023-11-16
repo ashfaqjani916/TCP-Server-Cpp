@@ -73,6 +73,7 @@ void main() {
 					cout << "SERVER> " << "Data recieved from the server successfully!" << endl;
 					cout << "SERVER> " << "The name of the student with the given Roll Number is ";
 					cout << string(buf, 0, bytesRecieved) << endl;
+					break;
 
 				}
 

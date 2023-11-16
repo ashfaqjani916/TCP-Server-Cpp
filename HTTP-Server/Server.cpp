@@ -143,6 +143,7 @@ void main()
 		const char* thename = nullptr;
 		for (auto it : obj.data[val])
 		{
+			string comp = it.first;
 			if (it.first == nam)
 			{
 				thename = it.second.c_str();
@@ -153,6 +154,7 @@ void main()
 		if (c)
 			cout << "You are not from R section......." << endl;
 
+		thename = "hellobabuuu.....";
 
 		cout << string(buf, 0, bytesRecieved) << endl;
 
