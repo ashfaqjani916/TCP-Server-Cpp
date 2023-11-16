@@ -11,39 +11,47 @@ using namespace std;
 class Data
 {
 public:
-	vector <pair<string, string>> data[10];
+	string test;
 	Data()
 	{
-		for (int i = 0; i < 10; ++i) {
-			data[i].emplace_back("", "");
-		}
+
 	}
-	void GetFileData()
+
+	Data(string n) {
+		test = n;
+	}
+
+
+	string GetFileData()
 	{
 		ifstream inputFile("names.txt");
 
 		if (!inputFile.is_open())
 		{
-			cerr << "ERROR OPENING FILE.........!!!!" << endl;
+			cerr << "ERROR OPENING THE FILE.........!!!!" << endl;
 		}
 		string line;
+
+		bool c = true;
 		while (getline(inputFile, line))
 		{
-			// Split the line into key and value using a delimiter (e.g., ":")
-			std::size_t pos = line.find(":");
-			if (pos != std::string::npos) {
-				string key = line.substr(0, pos);
-				string value = line.substr(pos + 1);
+			
+			int len = line.size();
+			size_t pos = line.find(",");
+			string key = line.substr(0, pos);
+			string value = line.substr(pos + 1, len-1);
 
-				int len = key.length();
-				string num = line.substr(len - 2, pos);
-				int val = stoi(num);
-				// Create a key-value pair and add it to the vector
-				std::pair<std::string, std::string> pair = std::make_pair(key, value);
-				data[val/10].push_back(pair);
+			bool c = true;
+
+			if (key == test) {
+				return value;
+				c = false;
 			}
+
+
 		}
 		inputFile.close();
+		if (c == false) return "false";
 
 	}
 };
@@ -108,19 +116,14 @@ void main()
 	closesocket(listening);
 
 	//while loop:  accept and echo message back to client
-	char buf[4096];
+	char buf[4096]; // 1024*4 bytes
 	while (true)
 	{
 		ZeroMemory(buf, 4096);
 
-		// initialize the data into an array of vector of pairs
+		// buf = "AP22110011164"
 
-		Data obj;
-		obj.GetFileData();
-
-
-
-
+		
 		// wait for the client to send data
 		int bytesRecieved = recv(clientSocket, buf, 4096, 0);
 		if (bytesRecieved == SOCKET_ERROR)
@@ -135,31 +138,37 @@ void main()
 		}
 
 		// check the value form the data
-		string nam = buf;
-		int len = nam.length();
-		string num = nam.substr(len - 1, len);
-		int val = stoi(num);
-		bool c = true;
-		const char* thename = nullptr;
-		for (auto it : obj.data[val])
-		{
-			string comp = it.first;
-			if (it.first == nam)
-			{
-				thename = it.second.c_str();
-				c = false;
-				break;
-			}
-		}
-		if (c)
-			cout << "You are not from R section......." << endl;
-
-		thename = "hellobabuuu.....";
 
 		cout << string(buf, 0, bytesRecieved) << endl;
 
+		string nam = buf;
+		int len = nam.length();
+
+		string num = nam.substr(len - 2, len - 1);
+
+
+		// stoi -> converts a string to int
+		int val = stoi(num);
+		bool c = true;
+		const char* thename = NULL;
+		
+
+		string funrecieve;
+
+		Data obj(nam);
+
+		funrecieve = obj.GetFileData();
+		thename = funrecieve.c_str();
+
+		if (funrecieve == "false") {
+			cout << "The client is not from R section......." << endl;
+			funrecieve = "You are not from R section.......";
+		}
+			
+
+
 		//echo message back to client
-		send(clientSocket,thename, bytesRecieved + 1, 0);
+		send(clientSocket,thename, 100, 0); // Size of the sending message is restricted to be in the size of recieving message - Resolved
 
 	}
 

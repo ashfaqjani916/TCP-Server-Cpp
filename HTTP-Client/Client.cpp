@@ -6,7 +6,7 @@
 using namespace std;
 
 void main() {
-	string  ipAddress = "192.168.0.160"; // IP addresss of the server
+	string  ipAddress = "10.1.188.230"; // IP addresss of the server
 	int port = 54000; // Listening port
 
 	// Initialize  winsocket
@@ -40,14 +40,14 @@ void main() {
 	// Connect to server
 
 	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
-	if (connResult == SOCKET_ERROR) {
+	if (connResult == SOCKET_ERROR) { 
 		cerr << "Can't connect to server, ERRR #" << WSAGetLastError() << endl;
-		WSACleanup;
+		WSACleanup; // Cleaning the memory and network ports, winsocket
 		return;
 	}
 	// Dp-while loop to send and recieve data
 
-	char buf[4096];
+	char buf[4096]; // 1024*4*1 bytes // used to recieve/store the message from the server
 	string userInput;
 
 	do {
@@ -61,10 +61,13 @@ void main() {
 
 		if (userInput.size() > 0) {  // Make sure the user has typed in something 
 			// Send the text
-
-			int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+			//const char* temp = userInput.c_str();
+			int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0); // To the server
 			if (sendResult != SOCKET_ERROR) {
 				// Wait for the response
+				// string - char array
+				// and const char* char array but returns the address
+				// string -> const char* conversion ---- .c_str()
 
 				ZeroMemory(buf, 4096);
 				int bytesRecieved = recv(sock, buf, 4096, 0);
@@ -73,8 +76,6 @@ void main() {
 					cout << "SERVER> " << "Data recieved from the server successfully!" << endl;
 					cout << "SERVER> " << "The name of the student with the given Roll Number is ";
 					cout << string(buf, 0, bytesRecieved) << endl;
-					break;
-
 				}
 
 			}
