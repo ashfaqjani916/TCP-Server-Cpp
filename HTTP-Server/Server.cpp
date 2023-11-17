@@ -178,21 +178,12 @@ void main()
 	while (true)
 	{
 		ZeroMemory(buf, 4096);
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 		// initialize the data into an array of vector of pairs
 
 		Data obj;
 		obj.GetFileData();
-
-=======
 		// buf = "AP22110011164"
 
->>>>>>> 77b3a7dc66b78bf7571ae40f228ec344a86a8e68
-		
->>>>>>> b9deef4770983bbbb8f6d5cb5546e718e710b960
 		// wait for the client to send data
 		int bytesRecieved = recv(clientSocket, buf, 4096, 0);
 		if (bytesRecieved == SOCKET_ERROR)
