@@ -77,7 +77,7 @@ void main()
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 
-	//tell winsock that the socket if for listening 
+	//tell winsock that the socket is for listening 
 	listen(listening, SOMAXCONN);
 
 
@@ -117,9 +117,6 @@ void main()
 
 		Data obj;
 		obj.GetFileData();
-
-
-
 
 		// wait for the client to send data
 		int bytesRecieved = recv(clientSocket, buf, 4096, 0);
