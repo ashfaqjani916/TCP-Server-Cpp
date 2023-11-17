@@ -4,6 +4,6 @@
     "\\HTTP-Client",
     "\\HTTP-Server"
   ],
-  "SelectedNode": "\\HTTP-Server\\Server.cpp",
+  "SelectedNode": "\\HTTP-Client\\Client.cpp",
   "PreviewInSolutionExplorer": false
 }

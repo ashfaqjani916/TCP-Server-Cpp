@@ -1,6 +1,20 @@
 ﻿  Server.cpp
+<<<<<<< HEAD
 C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(41,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(74,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(118,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
 C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(60): warning C4715: 'student::GetFileData': not all control paths return a value
+=======
+<<<<<<< HEAD
+C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(38,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(52,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(136,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  HTTP-Server.vcxproj -> C:\Users\ashfa\OneDrive\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\x64\Debug\HTTP-Server.exe
+=======
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(39,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(60,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(145,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\Server.cpp(56): warning C4715: 'Data::GetFileData': not all control paths return a value
+>>>>>>> 77b3a7dc66b78bf7571ae40f228ec344a86a8e68
   HTTP-Server.vcxproj -> C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Server\x64\Debug\HTTP-Server.exe
+>>>>>>> b9deef4770983bbbb8f6d5cb5546e718e710b960
