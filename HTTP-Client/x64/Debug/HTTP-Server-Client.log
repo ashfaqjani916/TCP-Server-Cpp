@@ -1,5 +1,6 @@
 ﻿  Client.cpp
-C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(8,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(45,3): warning C4551: function call missing argument list
-C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(65,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(13,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(50,3): warning C4551: function call missing argument list
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(81,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\Client.cpp(129,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   HTTP-Server-Client.vcxproj -> C:\Users\Admin\Desktop\Projects\TCP-Server-Cpp\HTTP-Client\x64\Debug\HTTP-Server-Client.exe

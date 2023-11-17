@@ -12,16 +12,18 @@ class Data
 {
 public:
 	string test;
-	Data()
+	Data()	
 	{
 
 	}
+};
 
-	Data(string n) {
+class student : public Data{
+public:
+
+	student(string n) {
 		test = n;
 	}
-
-
 	string GetFileData()
 	{
 		ifstream inputFile("names.txt");
@@ -35,11 +37,11 @@ public:
 		bool c = true;
 		while (getline(inputFile, line))
 		{
-			
+
 			int len = line.size();
 			size_t pos = line.find(",");
 			string key = line.substr(0, pos);
-			string value = line.substr(pos + 1, len-1);
+			string value = line.substr(pos + 1, len - 1);
 
 			bool c = true;
 
@@ -51,9 +53,65 @@ public:
 
 		}
 		inputFile.close();
-		if (c == false) return "false";
+		if (c == true) {
+			string fail = "not found :(";
+			return fail;
+		}
+	}
+};
+
+class calculator : public Data {
+public:
+
+	calculator() {
 
 	}
+	calculator(string n) {
+		test = n;
+	}
+
+	string calc() {
+		int len = test.size();
+		size_t pos = test.find(",");
+		string testsub;
+		testsub = test.substr(pos + 1);
+		size_t pos1 = pos+testsub.find(",");
+
+		string op1 = test.substr(0, pos);
+		string op2 = test.substr(pos + 1, pos1);
+
+		char op = test[len - 1];
+
+		double x = stod(op1);
+		double y = stod(op2);
+		double result;
+
+		switch (op) {
+		case '+':
+			result = x + y;
+			break;
+		case '-':
+			result = x - y;
+			break;
+		case '*':
+			result = x * y;
+			break;
+		case '/':
+			result = x / y;
+			break;
+		case '%':
+			int a = stoi(op1);
+			int b = stoi(op2);
+			result = a % b;
+			break;
+		}
+
+		string msg = to_string(result);
+
+		return msg;
+		}
+
+
 };
 
 void main()
@@ -121,8 +179,6 @@ void main()
 	{
 		ZeroMemory(buf, 4096);
 
-		// buf = "AP22110011164"
-
 		
 		// wait for the client to send data
 		int bytesRecieved = recv(clientSocket, buf, 4096, 0);
@@ -142,32 +198,33 @@ void main()
 		cout << string(buf, 0, bytesRecieved) << endl;
 
 		string nam = buf;
-		int len = nam.length();
-
-		string num = nam.substr(len - 2, len - 1);
-
-
-		// stoi -> converts a string to int
-		int val = stoi(num);
-		bool c = true;
-		const char* thename = NULL;
-		
-
 		string funrecieve;
 
-		Data obj(nam);
+		if (nam[0] != 'A') {
+			calculator ob(nam);
+			funrecieve = ob.calc();
+		}
 
-		funrecieve = obj.GetFileData();
+		else if (nam[0] == 'A') {
+			student obj(nam);
+			funrecieve = obj.GetFileData();
+		}
+		
+
+		const char* thename = NULL;
+
+
+		
+
 		thename = funrecieve.c_str();
 
-		if (funrecieve == "false") {
-			cout << "The client is not from R section......." << endl;
-			funrecieve = "You are not from R section.......";
+		if (funrecieve == "not found :(") {
+			cout << "The client is not from R section" << endl;
 		}
 			
 
 
-		//echo message back to client
+		//message back to client
 		send(clientSocket,thename, 100, 0); // Size of the sending message is restricted to be in the size of recieving message - Resolved
 
 	}
